@@ -19,7 +19,7 @@ class LoadingScreen(QWidget):
 
         timer = QTimer(self)
         self.startAnimation()
-        timer.singleShot(3000, self.stopAnimation)
+        timer.singleShot(5000, self.stopAnimation)
 
         self.show()
 

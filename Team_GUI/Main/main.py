@@ -35,7 +35,7 @@ class WindowClass(QMainWindow, form_class):
         # self.setFixedSize(600, 400)
         
         # Loading Image
-        # self.loading_screen = task_loading.LoadingScreen()   # 로딩함수 호출(로딩화면 로드)
+        self.loading_screen = task_loading.LoadingScreen()   # 로딩함수 호출(로딩화면 로드)
         
         # 시간 계산
         self.datetime = QDateTime.currentDateTime()

@@ -217,7 +217,7 @@ def main():
     
     print('pygame closed')
     pygame.quit()
-    sys.exit()
+    #sys.exit()
 
 # main()
 #출처: https://digiconfactory.tistory.com/entry/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B2%8C%EC%9E%84-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%8A%A4%EB%84%A4%EC%9D%B4%ED%81%AC-%EA%B2%8C%EC%9E%84-%EB%A7%8C%EB%93%A4%EA%B8%B0-%ED%8C%8C%EC%9D%B4%EA%B2%8C%EC%9E%84-%EB%AA%A8%EB%93%88-%EC%8A%A4%EB%84%A4%EC%9D%B4%ED%81%AC-%EA%B2%8C%EC%9E%84-%EA%B8%B0%EB%B3%B8

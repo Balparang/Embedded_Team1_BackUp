@@ -190,7 +190,8 @@ class TetrisApp(object):
     def quit(self):
         self.center_msg("Exiting...")
         pygame.display.update()
-        sys.exit()
+        pygame.quit()
+        #sys.exit()
  
     def drop(self, manual):
         if not self.gameover and not self.paused:
@@ -253,9 +254,9 @@ class TetrisApp(object):
  
         self.gameover = False
         self.paused = False
- 
+        run = True
         dont_burn_my_cpu = pygame.time.Clock()
-        while 1:
+        while run:
             self.screen.fill((0,0,0))
             if self.gameover:
                 self.center_msg("""Game Over!\nYour score: %d
@@ -291,9 +292,13 @@ Press space to continue""" % self.score)
                     for key in key_actions:
                         if event.key == eval("pygame.K_"
                         +key):
-                            key_actions[key]()
+                            if(key=='q'):
+                                run = False
+                            else:
+                                key_actions[key]()
  
             dont_burn_my_cpu.tick(maxfps)
+        pygame.quit()
  
 # if __name__ == '__main__':
 #     App = TetrisApp()

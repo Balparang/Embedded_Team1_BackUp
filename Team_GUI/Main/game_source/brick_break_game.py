@@ -314,13 +314,16 @@ class BrickBreak:
 		
 		
 	def run(self):
-		while 1:
+		run = True
+		while run:
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
 					sys.exit()
 				if event.type == pygame.KEYDOWN:
 					if event.key == pygame.K_q:
-						sys.exit()
+						run = False
+
+						
 				
 			self.clock.tick(50)
 			self.screen.fill(BLACK)
@@ -357,9 +360,12 @@ class BrickBreak:
 			
 			#have this here for cascading block drawing
 			#self.draw_bricks()
+
+		pygame.quit()
 		
+
 def main():
 	BrickBreak().run()
 			
-# main()
+#main()
 #출처: https://searchcode.com/codesearch/view/81962715/

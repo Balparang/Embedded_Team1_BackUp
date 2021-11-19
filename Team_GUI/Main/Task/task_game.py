@@ -1,6 +1,8 @@
 import sys
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
 from PyQt5 import uic
 from PyQt5.QtWidgets import QDialog, QApplication
 from PyQt5.QtGui import *
@@ -20,10 +22,15 @@ class gameWindow(QDialog):
         self.setWindowTitle("Game")  # 윈도우 타이틀 설정
         self.show()
         
+        self.label_bar.setStyleSheet('color: white;background-color:qlineargradient(spread:reflect, x1:1, y1:0, x2:0.995, y2:1, stop:0 rgba(200, 200, 200, 255), stop:0.305419 rgba(40, 40, 40, 255), stop:0.935961 rgba(10, 11, 18, 0), stop:1 rgba(100, 100, 100, 255)); border=0px')
+
         # 게임 커버
-        self.label_game1.setPixmap(self.loadImageFromFile("image_source/game0_cover.png", 200))
-        self.label_game2.setPixmap(self.loadImageFromFile("image_source/game1_cover.jpg", 200))
-        self.label_game3.setPixmap(self.loadImageFromFile("image_source/game2_cover.png", 200))  
+        self.label_game1.setPixmap(self.loadImageFromFile("image_source/game0_cover.png", 140))
+        self.label_game1.setStyleSheet('border: 2px solid white;')
+        self.label_game2.setPixmap(self.loadImageFromFile("image_source/game1_cover.jpg", 140))
+        self.label_game2.setStyleSheet('border: 2px solid white;')
+        self.label_game3.setPixmap(self.loadImageFromFile("image_source/game2_cover.png", 140))  
+        self.label_game3.setStyleSheet('border: 2px solid white;')
 
         ### 기능연결 ###
 
@@ -34,6 +41,9 @@ class gameWindow(QDialog):
 
         # Back: Close Window
         self.btn_back.clicked.connect(self.backToMainWindow)
+        self.btn_back.setIcon(QIcon('image_source/home.png'))
+        self.btn_back.setIconSize(QSize(60,60))
+        self.btn_back.setStyleSheet('border:0px;')
 
     # 이미지 로드
     # source_url의 이미지로 qPixmap 객체생성 후, 해당 객체 리턴
