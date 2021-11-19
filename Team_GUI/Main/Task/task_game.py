@@ -20,15 +20,12 @@ class gameWindow(QDialog):
         self.setWindowTitle("Game")  # 윈도우 타이틀 설정
         self.show()
         
-        # 게임 변수(게임 소스의 디렉토리를 리스트로 연결)
-        source_list = []
-        
+        # 게임 커버
+        self.label_game1.setPixmap(self.loadImageFromFile("image_source/game0_cover.png", 200))
+        self.label_game2.setPixmap(self.loadImageFromFile("image_source/game1_cover.jpg", 200))
+        self.label_game3.setPixmap(self.loadImageFromFile("image_source/game2_cover.png", 200))  
+
         ### 기능연결 ###
-        # 게임 이미지
-        # self.list_album_cover = self.setAlbumCover()
-        # self.list_song_titles = self.setSongTitle()
-        # self.label_ALBUM.setPixmap(self.loadImageFromFile(
-        #     "image_source/song_defalut_cover.png", 200))
 
         # 게임 플레이 버튼, lambda: "TypeError: argument 1 has unexpected type 'NoneType'" 방지하기 위해 사용 
         self.btn_game1.clicked.connect(lambda: self.playGame(0)) # brick game

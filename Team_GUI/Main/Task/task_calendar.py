@@ -15,6 +15,9 @@ class calendarWindow(QDialog):
         self.setupTableUI()
         self.setupcalendarUI()
         self.show()
+
+        # 그리드 표시
+        self.calendarWidget.setGridVisible(True)
         
         # 캘린더 데이터 받아옴
         # (17,1,0: "테스트 11.17") # 현재 자동으로 받아온 상태
@@ -24,14 +27,13 @@ class calendarWindow(QDialog):
         # 데이터 관리 변수
         self.current_row = 0
         self.num_to_load = 24
-        self.month = 0
+        self.month = self.calendarWidget.monthShown()
         self.date = 0
 
         # 캘린더 위젯 기능
         self.calendarWidget.clicked.connect(self.calendarClicked)  # 날짜 선택하여 클릭
         # self.calendarWidget.selectionChanged.connect(self.calendarClicked) # 날짜 선택 변경시 이벤트
-        self.calendarWidget.currentPageChanged.connect(
-            self.calendarPageChanged)  # 달력 다른 페이지로 넘길 때 이벤트
+        self.calendarWidget.currentPageChanged.connect(self.calendarPageChanged)  # 달력 다른 페이지로 넘길 때 이벤트
 
         # 버튼 기능 연결
         # self.btn_load_schedule.clicked.connect(self.loadSchedule)
@@ -54,19 +56,13 @@ class calendarWindow(QDialog):
     # 캘린더 위젯 UI 초기화
     def setupcalendarUI(self):
         self.selected_date = self.calendarWidget.selectedDate()  # QDate 타입으로 저장
-        self.label_selectedDate.setText(
-            self.selected_date.toString())  # QDate 타입 -> String 타입 캐스팅
+        self.label_selectedDate.setText(self.selected_date.toString())  # QDate 타입 -> String 타입 캐스팅
 
     # calendarWidget 시그널에 연결된 함수들
     # 클릭한 날짜 표시
     def calendarClicked(self):
         self.selected_date = self.calendarWidget.selectedDate()  # QDate 타입으로 저장
-        self.str_date_info = self.selected_date.toString()
-        day, self.month, self.date, year = self.str_date_info.split()
-        self.month = int(self.month)
-        self.date = int(self.date)  # str -> int, date를 인덱스로 활용하기 위해 정수형으로 캐스팅
-        # print(self.data[date][0])
-        # print(self.selected_date)
+        self.date = self.selected_date.day()
 
         # 로드된 데이터 중에서 해당 날짜에 맞는 데이터(스케쥴)가 몇 개인지 확인하고, 해당 갯수만큼 테이블 위젯에 표시
         self.task_num = self.data[self.date][0]
@@ -87,36 +83,43 @@ class calendarWindow(QDialog):
         # print(date) # 날짜 확인
         self.label_selectedDate.setText(self.selected_date.toString())  # QDate 타입 -> String 타입 캐스팅
 
-    # def calendarSelectionChanged(self) :
-    #     self.selected_date = self.calendarWidget.selectedDate() # QDate 타입으로 저장
-    #     print(self.selected_date)
-    #     self.label_selectedDate.setText(self.selected_date.toString()) # QDate 타입 -> String 타입 캐스팅
-
     def calendarPageChanged(self):
-        self.year = str(self.calendarWidget.yearShown()) + "년"
-        self.month = str(self.calendarWidget.monthShown()) + "월"
-        print(self.year, self.month)
-
+        # self.year = str(self.calendarWidget.yearShown()) + "년"
+        # self.month = str(self.calendarWidget.monthShown()) + "월"
+        # print(self.year, self.month)
+        pass
+    
     def loadPrevMonth(self):
-        if self.month == 12: # 12월의 날짜를 클릭한 상태에서 이전 달 버튼을 누르면
-            self.month = 11
-            self.data = Calender.GetEvents(0) # 11월의 데이터로 갱신(갱신 후 11월의 날짜 클릭)
-            print(self.data)
         self.calendarWidget.showPreviousMonth()
-        # elif self.month == 1: # 1월인 상태에서 
-        #     self.month = 12
-        #     self.data = Calender.GetEvents(1) 
+        self.month = self.calendarWidget.monthShown()
+        print(f"현재 선택된 월: {self.month}")
+        if self.month == 11: 
+            self.data = Calender.GetEvents(0) 
+            print(self.month, "월의 데이터 로드 완료...")
+        elif self.month == 12:
+            self.data = Calender.GetEvents(1)
+            print(self.month, "월의 데이터 로드 완료...")
 
     def loadNextMonth(self):
-        if self.month == 11: # 11월의 날짜를 클릭한 상태에서 다음 달 버튼을 누르면
-            self.month = 12
-            self.data = Calender.GetEvents(1) # 12월의 데이터로 갱신(갱신 후 12월의 날짜 클릭)
-            print(self.data)
         self.calendarWidget.showNextMonth()
-        # elif self.month == 12:
-            
+        self.month = self.calendarWidget.monthShown()
+        print(f"현재 선택된 월: {self.month}")
+        if self.month == 11: 
+            self.data = Calender.GetEvents(0) 
+            print(self.month, "월의 데이터 로드 완료...")
+        elif self.month == 12:
+            self.data = Calender.GetEvents(1)
+            print(self.month, "월의 데이터 로드 완료...")
 
     def loadToday(self):
+        self.month = self.calendarWidget.monthShown()
+        print(f"현재 선택된 월: {self.month}")
+        if self.month == 11: 
+            self.data = Calender.GetEvents(0) 
+            print(self.data)
+        elif self.month == 12:
+            self.data = Calender.GetEvents(1)
+            print(self.data)
         self.calendarWidget.showToday()
 
     # 현재 dialog 창 종료
