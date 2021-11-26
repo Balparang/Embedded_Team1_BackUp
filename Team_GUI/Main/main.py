@@ -13,11 +13,11 @@ from Task import task_email_02
 from Task import run_email
 from Task import task_musicplayer
 from Task import task_news 
-from Task import task_calendar
+# from Task import task_calendar
 from Task import task_game
 
 from Task import task_loading
-from Task import task_calendar
+# from Task import task_calendar
 from Task import tast_weather
 from news_scrap import naver_current_weather, naver_current_weather_Icon # 날씨
 
@@ -35,7 +35,7 @@ class WindowClass(QMainWindow, form_class):
         # self.setFixedSize(600, 400)
         
         # Loading Image
-        self.loading_screen = task_loading.LoadingScreen()   # 로딩함수 호출(로딩화면 로드)
+        # self.loading_screen = task_loading.LoadingScreen()   # 로딩함수 호출(로딩화면 로드)
         
         # 시간 계산
         self.datetime = QDateTime.currentDateTime()
@@ -80,10 +80,11 @@ class WindowClass(QMainWindow, form_class):
         self.btn_run_game.setIconSize(QSize(115,115))
         self.btn_run_game.setStyleSheet('border:0px;')
 
-        self.btn_run_calendar.clicked.connect(self.openCalendarWindow)
-        self.btn_run_calendar.setIcon(QIcon('image_source/cal_1.png'))
-        self.btn_run_calendar.setIconSize(QSize(125,125))
-        self.btn_run_calendar.setStyleSheet('border:0px;')
+        # 캘린더
+        # self.btn_run_calendar.clicked.connect(self.openCalendarWindow)
+        # self.btn_run_calendar.setIcon(QIcon('image_source/cal_1.png'))
+        # self.btn_run_calendar.setIconSize(QSize(125,125))
+        # self.btn_run_calendar.setStyleSheet('border:0px;')
 
         # 시간 표시 상태바
         self.statusBar().showMessage(self.datetime.toString(Qt.DefaultLocaleShortDate)) 
@@ -117,8 +118,8 @@ class WindowClass(QMainWindow, form_class):
     def openWeather(self):
         tast_weather.weatherWindow(self)
     
-    def openCalendarWindow(self):
-        task_calendar.calendarWindow(self)
+    # def openCalendarWindow(self):
+    #     task_calendar.calendarWindow(self)
         
     def openGameWindow(self):
         task_game.gameWindow(self)

@@ -14,6 +14,9 @@
    <string>Dialog</string>
   </property>
   <widget class="QPushButton" name="btn_back">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -141,6 +144,9 @@
     <enum>QFrame::Raised</enum>
    </property>
    <widget class="QLabel" name="label_game1">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -170,6 +176,9 @@
     <enum>QFrame::Raised</enum>
    </property>
    <widget class="QLabel" name="label_game2">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -199,6 +208,9 @@
     <enum>QFrame::Raised</enum>
    </property>
    <widget class="QLabel" name="label_game3">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
