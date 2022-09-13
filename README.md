@@ -1,7 +1,25 @@
-### 시연 영상
+# MiPi
+
+<p align="center">
+  <br>
+  <img src="https://user-images.githubusercontent.com/65555299/189960072-ebcdfbf2-8707-47e5-a728-2c133225bc1c.png" width=50%>
+  <br>
+</p>
+
+<br>
+
+## 프로젝트 소개
+
+라즈베이파이를 기반으로 날씨, 뉴스, 캘린더(구글 캘린더와 연동), 수신 이메일 확인 및 TTS 변환, 간단한 게임 등을 제공하는 개인 비서 프로그램입니다.
+
+<br>
+
+## 시연 영상
 - https://youtu.be/vnIl5J6dk3Y
 
-### 발표 자료
+<br>
+
+## 발표 자료
 
 ![슬라이드1](https://user-images.githubusercontent.com/65555299/189874371-d1bbb092-762f-45e5-b07a-98cbc4819585.PNG)
 ![슬라이드2](https://user-images.githubusercontent.com/65555299/189874378-bd267ed2-ed9c-43e0-a407-e45787990560.PNG)
